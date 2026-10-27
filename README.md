@@ -79,8 +79,8 @@ Requires Python 3.10 or newer.
 
 **Linux (Ubuntu/Debian):**
 ```
-./build.sh              # installs missing packages with apt, then builds dist/proxylatch
-./build.sh --install    # also installs to /opt/proxylatch, adds a "proxylatch" command and an app menu entry
+bash build.sh              # installs missing packages with apt, then builds dist/proxylatch
+bash build.sh --install    # also installs to /opt/proxylatch, adds a "proxylatch" command and an app menu entry
 ```
 To run without building: `sudo apt install python3-tk nftables pkexec`, then `python3 proxylatch.py`.
 

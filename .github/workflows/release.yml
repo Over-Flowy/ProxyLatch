@@ -12,8 +12,8 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Build
@@ -22,7 +22,7 @@ jobs:
       - name: Rename
         shell: bash
         run: mv dist/ProxyLatch.exe ProxyLatch-windows-x64.exe
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: windows
           path: ProxyLatch-windows-x64.exe
@@ -31,14 +31,14 @@ jobs:
     # the oldest supported runner: the program then also runs on older distributions (glibc)
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build
         run: |
           sudo apt-get update
-          ./build.sh
+          bash build.sh   # works even if git lost the executable bit
       - name: Rename
         run: mv dist/proxylatch proxylatch-linux-x64
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: linux
           path: proxylatch-linux-x64
@@ -47,12 +47,12 @@ jobs:
     needs: [windows, linux]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           merge-multiple: true
       - name: Checksums
         run: sha256sum ProxyLatch-windows-x64.exe proxylatch-linux-x64 > SHA256SUMS.txt
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
             ProxyLatch-windows-x64.exe
