@@ -1,0 +1,3 @@
+# Windows: only used for its signed WinDivert 2.2 driver binaries (WinDivert64.dll / .sys)
+pydivert>=4.0; sys_platform == "win32"
+# Linux needs no Python packages: python3-tk, nftables and pkexec come from apt

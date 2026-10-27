@@ -1,0 +1,4 @@
+# Linux scripts must keep LF line endings even when checked out on Windows
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary

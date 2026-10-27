@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Build output (build.bat / build.sh)
+build/
+dist/
+*.spec
+.build-venv/
+
+# Archives and local leftovers
+*.zip
+*.log
